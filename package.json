@@ -1,7 +1,7 @@
 {
   "name": "log-harvestor-web",
   "description": "The web script for Log Harvestor",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "contributors": [
     {
       "name": "Solomon Bush",
@@ -16,7 +16,6 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsup",
-    "build:t": "tsc",
     "test": "vitest"
   },
   "devDependencies": {
