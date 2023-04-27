@@ -14,16 +14,23 @@ const load = async () => {
         const document = Util.getDocument()
 
         const _logPage = () => API.sendPageView(tracking._id)
+        const _terminateSession = () => API.terminateSession(tracking._id)
 
         if (document) {
-            const originalPushState = history.pushState;
+            const originalPushState = window.history.pushState;
             if (originalPushState) {
                 history.pushState = function (data, title, url) {
                     originalPushState.apply(this, [data, title, url]);
+                    _logPage()
                 };
-                addEventListener('popstate', _logPage);
                 document.addEventListener('popstate', _logPage);
             }
+            const handeVis = () => {
+                if (document.visibilityState === 'hidden') {
+                    _terminateSession()
+                }
+            }
+            document.addEventListener('visibilitychange', handeVis);
         }
     }
 }

@@ -1,7 +1,7 @@
 import { describe, it, beforeAll, expect } from 'vitest'
 import { API } from '../API'
 import { mockConfig } from '../Config'
-import { ETrackingEvent } from '../types'
+import { ETrackingEvent } from '../Types'
 import { Session } from '../Session'
 
 
