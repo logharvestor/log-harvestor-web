@@ -20,6 +20,7 @@ export enum ETrackingEvent {
     TERMINATE = 'TERMINATE',
     RESUME = 'RESUME',
     START = 'START',
+    TEST = 'TEST',
 }
 export type ITrackingEnv = {
     protocol: string
@@ -41,18 +42,15 @@ export type ITrackingGeo = {
     latitude: string
 }
 export type ITrackingPageData = {
-    path: string
+    path?: string
     title?: string
     referrer?: string
 }
 export type ITrackingEvent = BaseDoc & ITrackingPageData & {
     name: string
-    path: string
-    title?: string
-    referrer?: string
-    start: Timestamp
-    metadata?: unknown
     event: ETrackingEvent
+    metadata?: unknown
+    start: Timestamp
 }
 
 
@@ -63,6 +61,8 @@ export type ITrackingView = BaseDoc & ITrackingPageData & {
 
 export type ITracking = CoreDoc & {
     tr_id: string
+    user?: string
+    fwd?: string
     ip: unknown
     referrer: unknown
     environment: ITrackingEnv
@@ -73,7 +73,6 @@ export type ITracking = CoreDoc & {
     events: ITrackingEvent[]
     start: Timestamp
     end: Timestamp
-    user?: string
 }
 
 export type ISessionBuilderData = {
