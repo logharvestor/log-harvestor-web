@@ -1,7 +1,7 @@
 {
   "name": "log-harvestor-web",
   "description": "The web script for Log Harvestor",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "contributors": [
     {
       "name": "Solomon Bush",
@@ -11,7 +11,7 @@
   ],
   "author": "solomon@logharvestor.com",
   "license": "ISC",
-  "main": "dist/index.js",
+  "main": "dist/index.global.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
