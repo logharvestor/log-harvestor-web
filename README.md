@@ -1,4 +1,4 @@
-<p align="center"><a href="https://www.logharvestor.com" target="_blank" rel="noopener" referrerpolicy='origin'><img width="70%" src="https://i.ibb.co/gwFL3jk/logo-drk.png" alt="LogHarvestor Logo"></a></p>
+<p align="center"><a href="https://www.logharvestor.com" target="_blank" rel="noopener" referrerpolicy='origin'><img src="https://i.ibb.co/gwFL3jk/logo-drk.png" alt="LogHarvestor Logo"></a></p>
 
 
 <p align="center">
@@ -19,9 +19,6 @@
 See [API Docs](https://www.logharvestor.com/docs/api) for Log-Harvestor.
 
 This package is specific to `browsers`. Please see our docs for other supported languages and frameworks, or use standard HTTP requests.
-
-## Installation
-______________
 
 ## Getting Started
 _____________
