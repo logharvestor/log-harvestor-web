@@ -29,10 +29,33 @@ If you have not done this yet:
 3. Create a new Forwarder - [Link](https://app.logharvestor.com/forwarder)
 4. Generate a Forwarder Token
 
+
+## Adding the script
+______________
 Now you can use this forwarder token to send logs, by adding providing the token to the script like this.
 ```Html
-<script id="log-harvestor" data-fwd-token="YOUR_TOKEN_HERE" src="https://unpkg.com/log-harvestor-web@latest" type="module" defer></script>
+<script data-fwd-token="YOUR_TOKEN_HERE" type="module" src="https://unpkg.com/log-harvestor-web@latest" id="log-harvestor" defer></script>
 ```
+
+
+## Google Tags
+_____________
+If you're adding Log Harvestor via Google Tags, add the following script:
+
+```Html
+<script data-fwd-token="YOUR_TOKEN_HERE" type="text/javascript" src="https://unpkg.com/log-harvestor-web@latest" id="log-harvestor" defer></script>
+```
+
+## Script options
+______________
+| key | type | description |
+| --- | --- |  ---|
+| data-fwd-token | *string* |  A token that you have created for your forwarder | 
+| type | *string* | Depends on how you inject the script (see below) |
+
+
+
+
 
 
 <p align="center"><a href="https://www.logharvestor.com" target="_blank" rel="noopener" referrerpolicy='origin'><img width="100" src="https://i.ibb.co/80sThNP/icon-drk.png" alt="LogHarvestor Logo"></a></p>
