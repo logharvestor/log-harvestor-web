@@ -1,7 +1,7 @@
 {
   "name": "log-harvestor-web",
-  "description": "The web script for Log Harvestor",
-  "version": "0.1.2",
+  "description": "The web analytics script for Log Harvestor",
+  "version": "1.0.0",
   "contributors": [
     {
       "name": "Solomon Bush",
@@ -33,7 +33,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/logharvestor/log-harvestor-webt.git"
+    "url": "git+https://github.com/logharvestor/log-harvestor-web.git"
   },
   "bugs": {
     "url": "https://github.com/logharvestor/log-harvestor-web/issues"
@@ -42,6 +42,12 @@
   "keywords": [
     "logging",
     "log-harvestor",
-    "log harvestor"
+    "log harvestor",
+    "log-harvestor-web",
+    "log harvestor web",
+    "log-harvester",
+    "log harvester",
+    "log-harvester-web",
+    "log harvester web"
   ]
 }

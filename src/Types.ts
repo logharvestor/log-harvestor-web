@@ -16,79 +16,49 @@ export type Timestamps = {
 
 export type CoreDoc = BaseDoc & Archives & Timestamps
 
-export enum ETrackingEvent {
-    TERMINATE = 'TERMINATE',
-    RESUME = 'RESUME',
-    START = 'START',
-    TEST = 'TEST',
-}
-export type ITrackingEnv = {
-    protocol: string
-    host: string
-    env: string
-    version: string
-}
-
-export type ITrackingAddress = {
-    city: string
-    country_code: string
-    country_name: string
-    postal_code: string
-    state: string
-}
-
-export type ITrackingGeo = {
-    longitude: string
-    latitude: string
-}
-export type ITrackingPageData = {
-    path?: string
-    title?: string
-    referrer?: string
-}
-export type ITrackingEvent = BaseDoc & ITrackingPageData & {
-    name: string
-    event: ETrackingEvent
-    metadata?: unknown
-    start: Timestamp
+export type ILog = CoreDoc & {
+    typ: string
+    msg: any
+    fwd: string
+    // Flagged
+    flagged?: boolean
+    // Stats fields
+    tot_comments?: number
 }
 
 
-export type ITrackingView = BaseDoc & ITrackingPageData & {
-    start: Timestamp
-    end: Timestamp
+export enum ETrackingLogType {
+    VIEW = 'Tracking.View',
+    EVENT = 'Tracking.Event',
+    TERMINATE = 'Tracking.TERMINATE'
 }
 
-export type ITracking = CoreDoc & {
-    tr_id: string
-    user?: string
-    fwd?: string
-    ip: unknown
-    referrer: unknown
-    environment: ITrackingEnv
-    address: ITrackingAddress
-    geoLocation: ITrackingGeo
-    ua: unknown
-    views: ITrackingView[]
-    events: ITrackingEvent[]
-    start: Timestamp
-    end: Timestamp
-}
-
-export type ISessionBuilderData = {
-    IPv4: unknown;
-    city: unknown;
-    country_code: unknown;
-    country_name: unknown;
-    postal: unknown;
-    state: unknown;
-    longitude: unknown;
-    latitude: unknown;
-}
-
-export type ISession = {
-    sessionData: ITracking
-    init: () => unknown
-    fetchSessionData: () => Promise<ISessionBuilderData>
-    buildSessionData: (d: ISessionBuilderData) => boolean
+export type ITrackingLog = ILog & {
+    typ: ETrackingLogType
+    msg: {
+        /* ENVIRONMENT */
+        protocol: string
+        host: string
+        env: string
+        version: string
+        /* IP ADDRESS */
+        ip: string
+        /* DEVICE ANALYTICS */
+        ua: unknown
+        /* GEO LOCATION */
+        city: string
+        country_code: string
+        country_name: string
+        postal_code: string
+        state: string
+        longitude: string
+        latitude: string
+        /* PAGE INFO */
+        path?: string
+        title?: string
+        referrer?: string
+        /* REFS */
+        tr_id?: string
+        user?: string
+    }
 }

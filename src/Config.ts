@@ -14,7 +14,7 @@ export const mockConfig = () => {
     Config.GEO_URL = 'https://geolocation-db.com/json/',
     Config.VERSION = version
     Config.ENV = 'development'
-    Config.FWD_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImZvcndhcmRlciJ9.eyJfaWQiOiI2NDQ5OTQ2ZDFjMDU2MzQ4NWUyY2JkOGYiLCJpYXQiOjE2ODI1NDM3MjV9.YQfwV7ibiz4D3-yEEp7i4_pWrZH7KYlN7iuIxS_Ivu0'
+    Config.FWD_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImZvcndhcmRlciJ9.eyJfaWQiOiI2NDY0NmUwOWI0NjAwMWRlNmFlMDA4YTYiLCJpYXQiOjE2ODQzMTA2MTF9.sqZf2284qtkcSiO3u9xaOmBNXqfWCvNz_e_qW5hzsCI'
 }
 
 export const loadConfig = () => {
