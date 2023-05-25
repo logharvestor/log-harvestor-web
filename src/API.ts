@@ -12,7 +12,7 @@ export class API {
         headers.append('Authorization', `Bearer ${Config.FWD_TOKEN}`)
         return headers
     }
-    private static buildPageData = async () => {
+    private static buildPageData = async (meta = {}) => {
         const req = await fetch(Config.GEO_URL);
         const geoData: any = await req.json()
 
@@ -60,15 +60,16 @@ export class API {
             referrer: Util.getWindowChild(document.referrer, ''),
             /* REFS */
             tr_id: trackingId,
-            user: userId
+            user: userId,
+            ...meta
         })
     }
 
 
-    static sendLog = async (logType: ETrackingLogType): Promise<any | null> => {
+    static sendLog = async (logType: ETrackingLogType, meta?: Object): Promise<any | null> => {
         const payload = JSON.stringify({
             typ: logType,
-            msg: await API.buildPageData()
+            msg: await API.buildPageData(meta)
         })
 
         try {

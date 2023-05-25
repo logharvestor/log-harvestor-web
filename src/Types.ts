@@ -29,9 +29,14 @@ export type ILog = CoreDoc & {
 
 export enum ETrackingLogType {
     VIEW = 'Tracking.View',
-    EVENT = 'Tracking.Event',
-    TERMINATE = 'Tracking.TERMINATE'
+    EVENT = 'Tracking.Event'
 }
+
+export enum ETrackingEventType {
+    SESSION_TERMINATED = 'session-terminated',
+    SESSION_STARTED = 'session-started',
+  }
+  
 
 export type ITrackingLog = ILog & {
     typ: ETrackingLogType
@@ -60,5 +65,7 @@ export type ITrackingLog = ILog & {
         /* REFS */
         tr_id?: string
         user?: string
+        /* EVENT ONLY */
+        eventType?: ETrackingEventType
     }
 }
