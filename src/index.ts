@@ -27,9 +27,11 @@ const load = async () => {
                 _terminateSession()
             }
             if (document.visibilityState === 'visible') {
-                _startSession()
+                _logPage()
             }
         }
+        _startSession()
+
         document.addEventListener('visibilitychange', handeVis);
     }
 }
