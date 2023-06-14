@@ -1,7 +1,7 @@
 {
   "name": "log-harvestor-web",
   "description": "The web analytics script for Log Harvestor",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "contributors": [
     {
       "name": "Solomon Bush",
@@ -16,6 +16,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsup",
+    "build:dev": "./dev.sh",
     "test": "vitest"
   },
   "devDependencies": {
@@ -43,11 +44,10 @@
     "logging",
     "log-harvestor",
     "log harvestor",
-    "log-harvestor-web",
-    "log harvestor web",
-    "log-harvester",
-    "log harvester",
-    "log-harvester-web",
-    "log harvester web"
+    "web analytics",
+    "GA alternative",
+    "Google Analytics alternative",
+    "website statistics",
+    "javascript web analytics"
   ]
 }

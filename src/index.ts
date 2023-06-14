@@ -1,19 +1,27 @@
 import { loadConfig } from './Config';
 import { Util } from './Util';
 import { API } from './API';
-import { ETrackingEventType, ETrackingLogType } from './Types';
+import { attachFormSubmitListeners } from './Form';
+import { ETrackingLogType } from './Types';
 
 export * from './Types'
+
+/* V2
+    - Fwd is configured remotely via LogHarvestorApp
+    - When the script is initialized, it will take the `fwd-token` and use it to fetch
+        the Fwd configuration from the logharvestor.com/api/fwd/:token/ endpoint
+    - The configuration will be stored via the Cookie class
+*/
 
 const load = async () => {
     loadConfig()
     const document = Util.getDocument()
 
     const _logPage = () => API.sendLog(ETrackingLogType.VIEW)
-    const _startSession = () => API.sendLog(ETrackingLogType.EVENT, { eventName: ETrackingEventType.SESSION_STARTED })
-    const _terminateSession = () => API.sendLog(ETrackingLogType.EVENT, { eventName: ETrackingEventType.SESSION_TERMINATED })
-
     if (document) {
+
+        attachFormSubmitListeners()
+
         const originalPushState = window.history.pushState;
         if (originalPushState) {
             history.pushState = function (data, title, url) {
@@ -22,15 +30,13 @@ const load = async () => {
             };
             document.addEventListener('popstate', _logPage);
         }
+
         const handeVis = () => {
-            if (document.visibilityState === 'hidden') {
-                _terminateSession()
-            }
             if (document.visibilityState === 'visible') {
                 _logPage()
             }
         }
-        _startSession()
+        _logPage()
 
         document.addEventListener('visibilitychange', handeVis);
     }

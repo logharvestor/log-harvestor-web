@@ -6,24 +6,28 @@ export const Config = {
     GEO_URL: 'https://geolocation-db.com/json/',
     VERSION: version,
     ENV: 'production',
-    FWD_TOKEN: ''
-}
-
-export const mockConfig = () => {
-    Config.API_URL = 'http://0.0.0.0:4000/api',
-    Config.GEO_URL = 'https://geolocation-db.com/json/',
-    Config.VERSION = version
-    Config.ENV = 'development'
-    Config.FWD_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImZvcndhcmRlciJ9.eyJfaWQiOiI2NDY0NmUwOWI0NjAwMWRlNmFlMDA4YTYiLCJpYXQiOjE2ODQzMTA2MTF9.sqZf2284qtkcSiO3u9xaOmBNXqfWCvNz_e_qW5hzsCI'
+    FWD_TOKEN: '',
+    DEBUG: false
 }
 
 export const loadConfig = () => {
     const document = Util.getDocument()
     const script = document?.getElementById('log-harvestor') || document?.currentScript
     if (script) {
-        const configApiUrl = script.getAttribute('data-api-url')
-        const configFwdToken = script.getAttribute('data-fwd-token')
+        const configApiUrl = script.getAttribute(ConfigArgs.CONFIG_ARG_API_URL)
         Config.API_URL = !!configApiUrl ? configApiUrl : Config.API_URL
+
+        const configFwdToken = script.getAttribute(ConfigArgs.CONFIG_ARG_FWD_TOKEN)
         Config.FWD_TOKEN = !!configFwdToken ? configFwdToken : Config.FWD_TOKEN
+
+        const configDebug = script.getAttribute(ConfigArgs.CONFIG_ARG_DEBUG)
+        Config.DEBUG = !!configDebug ? configDebug === 'true' : Config.DEBUG
     }
+}
+
+
+export enum ConfigArgs {
+    CONFIG_ARG_API_URL = 'data-api-url',
+    CONFIG_ARG_FWD_TOKEN = 'data-fwd-token',
+    CONFIG_ARG_DEBUG = 'data-debug',
 }

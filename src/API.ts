@@ -13,6 +13,20 @@ export class API {
         return headers
     }
     private static buildPageData = async (meta = {}) => {
+        
+        const pageData = {
+            /* ENVIRONMENT */
+            protocol: Util.getWindowChild(window?.location?.protocol, ''),
+            host: Util.getWindowChild(window?.location?.host, ''),
+            env: Config.ENV,
+            version: Config.VERSION,
+            /* PAGE INFO */
+            path: Util.getWindowChild(window.location.pathname, ''),
+            title: Util.getWindowChild(document.title, ''),
+            referrer: Util.getWindowChild(document.referrer, ''),
+            ...meta
+        }
+
         const req = await fetch(Config.GEO_URL);
         const geoData: any = await req.json()
 
@@ -37,11 +51,7 @@ export class API {
 
 
         return ({
-            /* ENVIRONMENT */
-            protocol: Util.getWindowChild(window?.location?.protocol, ''),
-            host: Util.getWindowChild(window?.location?.host, ''),
-            env: Config.ENV,
-            version: Config.VERSION,
+            ...pageData,
             /* IP ADDRESS */
             ip: Util.cleanString(geoData?.IPv4, ''),
             /* DEVICE ANALYTICS */
@@ -54,14 +64,9 @@ export class API {
             state: Util.cleanString(geoData?.state, ''),
             longitude: geoData?.longitude,
             latitude: geoData?.latitude,
-            /* PAGE INFO */
-            path: Util.getWindowChild(window.location.pathname, ''),
-            title: Util.getWindowChild(document.title, ''),
-            referrer: Util.getWindowChild(document.referrer, ''),
             /* REFS */
             tr_id: trackingId,
-            user: userId,
-            ...meta
+            user: userId
         })
     }
 

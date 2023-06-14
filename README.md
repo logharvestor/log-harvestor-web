@@ -51,10 +51,8 @@ ______________
 | key | type | description |
 | --- | --- |  ---|
 | data-fwd-token | *string* |  A token that you have created for your forwarder | 
-| type | *string* | Depends on how you inject the script (see below) |
-
-
-
+| data-api-url | *string* | The url that the logs are being sent to **Development purposes**|
+| data-debug | *string* | Logs all the events to the console **Development purposes** |
 
 
 
