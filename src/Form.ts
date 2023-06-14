@@ -108,6 +108,11 @@ export const attachFormSubmitListeners = () => {
             Util.debug(`Form Submitted! Event data`);
             Util.debug({ event });
         }
+        if (event.data.type === 'hsFormCallback' && event.data.eventName === 'onFormReady') {
+            API.sendLog(ETrackingLogType.FORM_SUBMIT, { formData: event.data })
+            Util.debug(`Form Submitted! Event data`);
+            Util.debug({ event });
+        }
         Util.debug({ event });
     });
 
