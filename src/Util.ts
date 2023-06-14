@@ -15,6 +15,6 @@ export const Util = {
         return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
     },
     debug: (msg: any, ...args: unknown[]): void => {
-        // console.log(`[log-harvestor]`, msg, ...args)
+        console.log(`[log-harvestor]`, msg, ...args)
     }
 }

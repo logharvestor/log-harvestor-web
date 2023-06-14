@@ -78,6 +78,7 @@ export class API {
         })
 
         try {
+            Util.debug({ payload })
             const res = await fetch(`${Config.API_URL}/log`, {
                 method: 'post',
                 headers: API.buildHeaders(),

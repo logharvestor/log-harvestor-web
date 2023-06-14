@@ -78,7 +78,31 @@ export const processFormSubmit = (e: SubmitEvent) => {
 
 export const attachFormSubmitListeners = () => {
     const document = Util.getDocument()
-    const forms = document?.getElementsByTagName('form')
+    const forms = []
+
+    const docForms = document?.getElementsByTagName('form')
+    if (docForms) {
+        for (let i = 0; i < docForms.length; i++) {
+            const docForm = docForms[i]
+            forms?.push(docForm)
+        }
+    }
+    /* Find forms that may be nested in iFrames */
+    const iframes = document?.getElementsByTagName('iframe')
+    if (iframes) {
+        for (let i = 0; i < iframes.length; i++) {
+            const iframe = iframes[i]
+            const iframeForms = iframe?.contentWindow?.document?.getElementsByTagName('form')
+            if (iframeForms) {
+                for (let j = 0; j < iframeForms.length; j++) {
+                    const iframeForm = iframeForms[j]
+                    forms?.push(iframeForm)
+                }
+            }
+        }
+    }
+
+
     Util.debug({ forms })
     if (forms) {
         for (let i = 0; i < forms.length; i++) {
