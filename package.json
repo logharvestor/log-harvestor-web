@@ -1,7 +1,7 @@
 {
   "name": "log-harvestor-web",
   "description": "The web analytics script for Log Harvestor",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "contributors": [
     {
       "name": "Solomon Bush",

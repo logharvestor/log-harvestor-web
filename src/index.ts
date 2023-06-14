@@ -19,9 +19,7 @@ const load = async () => {
 
     const _logPage = () => API.sendLog(ETrackingLogType.VIEW)
     if (document) {
-        setTimeout(() => {
-            attachFormSubmitListeners()
-        }, 500)
+        attachFormSubmitListeners()
 
         const originalPushState = window.history.pushState;
         if (originalPushState) {
