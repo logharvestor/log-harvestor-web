@@ -106,17 +106,12 @@ export const attachFormSubmitListeners = () => {
         if (event.data.type === 'hsFormCallback' && event.data.eventName === 'onFormSubmit') {
             API.sendLog(ETrackingLogType.FORM_SUBMIT, { formData: event.data })
             Util.debug(`Form Submitted! Event data`);
-            Util.debug({ event });
-        }
-        if (event.data.type === 'hsFormCallback' && event.data.eventName === 'onFormReady') {
-            API.sendLog(ETrackingLogType.FORM_SUBMIT, { formData: event.data })
-            Util.debug(`Form Submitted! Event data`);
-            Util.debug({ event });
         }
         Util.debug({ event });
     });
 
     Util.debug({ forms })
+    
     if (forms) {
         for (let i = 0; i < forms.length; i++) {
             const form = forms[i]

@@ -1,3 +1,5 @@
+import { Config } from "./Config"
+
 export const Util = {
     getWindowChild: <T = unknown>(o: T, fallback: T): T => {
         return Util.windowAvailable() ? o : fallback
@@ -15,6 +17,8 @@ export const Util = {
         return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
     },
     debug: (msg: any, ...args: unknown[]): void => {
-        console.log(`[log-harvestor]`, msg, ...args)
+        if (Config.DEBUG === true) {
+            console.log(`[log-harvestor]`, msg, ...args)
+        }
     }
 }
